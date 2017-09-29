@@ -6,8 +6,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import ru.demyanko.casino.controller.Controller;
 import ru.demyanko.casino.controller.ControllerImpl;
-import ru.demyanko.casino.model.GameContent;
-import ru.demyanko.casino.model.GameContentImpl;
+import ru.demyanko.casino.model.casino1.GameContent;
+import ru.demyanko.casino.model.casino1.GameContentImpl;
 
 public class Game extends ApplicationAdapter {
 

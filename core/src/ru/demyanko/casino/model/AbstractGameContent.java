@@ -3,16 +3,18 @@ package ru.demyanko.casino.model;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
+import ru.demyanko.casino.model.casino1.GameContent;
+import ru.demyanko.casino.model.casino1.GameContentUnit;
 
 /**
  * Created by Dmitriy on 27.09.2017.
  */
-abstract class AbstractGameContent implements GameContent{
-    float screenWidth;
-    float screenHeigth;
-    Graphics graphics;
+abstract public class AbstractGameContent implements GameContent {
+    protected float screenWidth;
+    protected float screenHeigth;
+    protected Graphics graphics;
 
-    Array<GameContentUnit> gameContentUnits;
+    protected Array<GameContentUnit> gameContentUnits;
 
     public AbstractGameContent(Graphics graphics) {
         this.screenWidth = graphics.getWidth();

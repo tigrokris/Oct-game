@@ -1,4 +1,4 @@
-package ru.demyanko.casino.model;
+package ru.demyanko.casino.model.casino1;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

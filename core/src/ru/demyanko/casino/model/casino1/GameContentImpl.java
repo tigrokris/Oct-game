@@ -1,6 +1,7 @@
-package ru.demyanko.casino.model;
+package ru.demyanko.casino.model.casino1;
 
 import com.badlogic.gdx.Graphics;
+import ru.demyanko.casino.model.AbstractGameContent;
 
 /**
  * Created by Dmitriy on 28.09.2017.
