@@ -20,7 +20,7 @@ class Barrel extends GameContentUnit {
     private String texturePrefix;
     private String textureFormat;
 
-    public Barrel(float x, float y, float width, float height, int number, int amuntOfPictures,String textureNamePrefix,String textureFormat) {
+    Barrel(float x, float y, float width, float height, int number, int amuntOfPictures,String textureNamePrefix,String textureFormat) {
         super(x, y, width, height);
         this.number = number;
         this.amuntOfPictures = amuntOfPictures;
@@ -41,7 +41,7 @@ class Barrel extends GameContentUnit {
         }
     }
 
-    public void setSpeed(int speed) {
+    void setSpeed(int speed) {
         this.speed = speed;
     }
 
@@ -78,11 +78,11 @@ class Barrel extends GameContentUnit {
         }
     }
 
-    public int getAmuntOfPictures() {
+    int getAmuntOfPictures() {
         return amuntOfPictures;
     }
 
-    public void stopBarrel() {
+    void stopBarrel() {
         for (int i = 0; i < getAmuntOfPictures(); i++) {
             if (pictures.get(i).getY() <= getY()  && pictures.get(i).getY() >= getY() - 6) {
                 isStopped = true;
@@ -91,11 +91,11 @@ class Barrel extends GameContentUnit {
         }
     }
 
-    public boolean isStopped() {
+    boolean isStopped() {
         return isStopped;
     }
 
-    public void setIsStopped(boolean isStopped) {
+    void setIsStopped(boolean isStopped) {
         this.isStopped = isStopped;
     }
 

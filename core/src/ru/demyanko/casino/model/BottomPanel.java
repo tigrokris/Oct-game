@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 class BottomPanel extends GameContentUnit {
     Texture texture;
-    public BottomPanel(float x, float y, float width, float height,String textureName) {
+    BottomPanel(float x, float y, float width, float height,String textureName) {
         super(x, y, width, height);
         texture =new Texture(textureName);
     }

@@ -3,7 +3,6 @@ package ru.demyanko.casino.model;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
-import ru.demyanko.casino.GameContent;
 
 /**
  * Created by Dmitriy on 27.09.2017.

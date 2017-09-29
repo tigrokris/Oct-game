@@ -4,9 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.utils.TimeUtils;
-import ru.demyanko.casino.Controller;
 import ru.demyanko.casino.Game;
-import ru.demyanko.casino.GameContent;
+import ru.demyanko.casino.model.GameContent;
 
 
 /**

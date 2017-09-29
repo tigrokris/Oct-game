@@ -4,10 +4,10 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import ru.demyanko.casino.controller.Controller;
 import ru.demyanko.casino.controller.ControllerImpl;
+import ru.demyanko.casino.model.GameContent;
 import ru.demyanko.casino.model.GameContentImpl;
-
-import java.util.ResourceBundle;
 
 public class Game extends ApplicationAdapter {
 

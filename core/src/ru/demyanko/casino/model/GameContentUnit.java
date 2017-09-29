@@ -14,15 +14,15 @@ public abstract class GameContentUnit extends Actor{
     abstract public void update ();
     abstract public void dispose ();
 
-    public GameContentUnit() {
+    GameContentUnit() {
     }
 
-    public GameContentUnit(float x, float y) {
+    GameContentUnit(float x, float y) {
         setX(x);
         setY(y);
     }
 
-    public GameContentUnit(float x, float y, float width, float height) {
+    GameContentUnit(float x, float y, float width, float height) {
         setX(x);
         setY(y);
         setWidth(width);

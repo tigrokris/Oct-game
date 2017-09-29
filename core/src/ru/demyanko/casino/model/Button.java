@@ -21,7 +21,7 @@ class Button extends GameContentUnit {
     private static final int FRAME_COLS=1;
     private float stateTime;
 
-    public Button(float screenWidth, float bottomPanelHeight,String textureName) {
+    Button(float screenWidth, float bottomPanelHeight,String textureName) {
         setWidth( screenWidth/4);
         setHeight(bottomPanelHeight/2);
         texture=new Texture(textureName);

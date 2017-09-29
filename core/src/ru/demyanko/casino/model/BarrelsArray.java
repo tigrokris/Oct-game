@@ -15,7 +15,7 @@ class BarrelsArray extends GameContentUnit {
     private boolean isStarted;
 
 
-    public BarrelsArray(float x, float y, float width, float height) {
+    BarrelsArray(float x, float y, float width, float height) {
         super(x, y, width, height);
         this.barrels=new Array();
         for (int i = 0; i < 5 ; i++) {

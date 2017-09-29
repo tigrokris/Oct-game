@@ -1,4 +1,4 @@
-package ru.demyanko.casino;
+package ru.demyanko.casino.controller;
 
 import com.badlogic.gdx.Input;
 
