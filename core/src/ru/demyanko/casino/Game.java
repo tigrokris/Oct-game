@@ -2,51 +2,54 @@ package ru.demyanko.casino;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import ru.demyanko.casino.controller.Controller;
-import ru.demyanko.casino.controller.ControllerImpl;
+import com.badlogic.gdx.utils.TimeUtils;
 import ru.demyanko.casino.model.GameContent;
 import ru.demyanko.casino.model.casino1.GameContentImpl;
+import ru.demyanko.casino.view.GameScreen;
 
-public class Game extends ApplicationAdapter {
+public class Game extends com.badlogic.gdx.Game {
 
-	SpriteBatch batch;
+	public SpriteBatch batch;
 	public static final int LOWER_SPEED_LIMIT=200;//barrel rotation speed
 	public static final int UPPER_SPEED_LIMIT=400;//barrel rotation speed
 	public static final int ROTATION_TIME=4000;//barrel rotation time
 	public static final int ROTATION_DIAPASON_TIME=1000;//barrel rotation time over the basic,i.e. 4 sec plus less then 1 sec(4-5 sec)
 	public static final int AMOUNT_BARREL_PICTURES=11;//cannot be less 4
 	public GameContent gameContent;
-	public Controller controller;
 	public static long stopTime;
 	public static boolean isStarted=false;
+
+
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		gameContent=new GameContentImpl(Gdx.graphics);
 		gameContent.create();
-		controller = new ControllerImpl(gameContent,Gdx.graphics);
+		this.setScreen(new GameScreen(this));
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		gameContent.draw(batch);
-		batch.end();
+		super.render();
 
 		gameContent.update();
-		controller.start(Gdx.input);
-		controller.stop();
-
+		boolean isStartClicked;
+		if(Gdx.input.isButtonPressed(Input.Keys.LEFT) && (isStartClicked=gameContent.getStartUnit().isClicked(Gdx.input, Gdx.graphics))){
+			isStarted= isStartClicked;
+			gameContent.start();
+		}
+		if(TimeUtils.millis()>stopTime) {
+			isStarted=false;
+			gameContent.stop();
+		}
 	}
 
 	@Override
 	public void dispose () {
-		batch.dispose();
-		gameContent.dispose();
+		super.dispose();
 	}
 }
