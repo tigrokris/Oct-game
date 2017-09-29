@@ -5,7 +5,7 @@ import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.utils.TimeUtils;
 import ru.demyanko.casino.Game;
-import ru.demyanko.casino.model.casino1.GameContent;
+import ru.demyanko.casino.model.GameContent;
 
 
 /**
@@ -26,7 +26,7 @@ public class ControllerImpl implements Controller{
         boolean isStartClicked;
         if(input.isButtonPressed(Input.Keys.LEFT) && (isStartClicked=gameContent.getStartUnit().isClicked(Gdx.input, graphics))){
             Game.isStarted= isStartClicked;
-            gameContent.update();
+            gameContent.start();
         }
     }
     @Override
@@ -34,6 +34,7 @@ public class ControllerImpl implements Controller{
     public void stop() {
         if(TimeUtils.millis()>Game.stopTime) {
             Game.isStarted=false;
+            gameContent.stop();
         }
     }
 }

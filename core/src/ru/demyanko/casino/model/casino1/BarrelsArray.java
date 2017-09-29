@@ -36,6 +36,9 @@ class BarrelsArray extends GameContentUnit {
         for (Barrel barrel : barrels) {
             barrel.update();
         }
+    }
+
+    void start(){
         if(Game.isStarted && !isStarted ){
             for (int i = 0; i < barrels.size; i++) {
                 barrels.get(i).setSpeed(MathUtils.random(Game.LOWER_SPEED_LIMIT, (Game.UPPER_SPEED_LIMIT)));
@@ -45,6 +48,9 @@ class BarrelsArray extends GameContentUnit {
                 isStarted=true;
             }
         }
+    }
+
+    void stop(){
         if(!Game.isStarted && isStarted ) {
             if (barrelToStop < 5 && !Game.isStarted) {
                 barrels.get(barrelToStop).stopBarrel();
@@ -55,7 +61,6 @@ class BarrelsArray extends GameContentUnit {
                 isStarted=false;
         }
     }
-
     @Override
     public void dispose() {
         for (Barrel barrel : barrels) {

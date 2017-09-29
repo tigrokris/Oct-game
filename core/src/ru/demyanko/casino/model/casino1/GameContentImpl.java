@@ -1,6 +1,7 @@
 package ru.demyanko.casino.model.casino1;
 
 import com.badlogic.gdx.Graphics;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import ru.demyanko.casino.model.AbstractGameContent;
 
 /**
@@ -31,9 +32,23 @@ public class GameContentImpl extends AbstractGameContent {
 
     }
 
-
     @Override
     public GameContentUnit getStartUnit() {
         return button;
+    }
+
+    @Override
+    public void draw(SpriteBatch batch) {
+        super.draw(batch);
+    }
+
+    @Override
+    public void start() {
+        barrels.start();
+    }
+
+    @Override
+    public void stop() {
+        barrels.stop();
     }
 }
