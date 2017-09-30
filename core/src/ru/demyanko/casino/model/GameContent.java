@@ -1,7 +1,6 @@
 package ru.demyanko.casino.model;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import ru.demyanko.casino.model.casino1.GameContentUnit;
 
 /**
  * Created by Dmitriy on 28.09.2017.
@@ -13,5 +12,5 @@ public interface GameContent {
     void dispose();
     void start();
     void stop();
-    GameContentUnit getStartUnit();
+    AbstractGameContentUnit getStartUnit();
 }

@@ -1,16 +1,18 @@
 package ru.demyanko.casino.model.casino1;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
+import ru.demyanko.casino.model.AbstractGameContentUnit;
 
 /**
  * Created by Dmitriy on 26.09.2017.
  */
-class Barrel extends GameContentUnit {
+class Barrel extends AbstractGameContentUnit {
     private int speed;
     private int number;
     private int amuntOfPictures;
@@ -19,9 +21,16 @@ class Barrel extends GameContentUnit {
     private boolean isStopped;
     private String texturePrefix;
     private String textureFormat;
+    private Graphics graphics;
 
-    Barrel(float x, float y, float width, float height, int number, int amuntOfPictures,String textureNamePrefix,String textureFormat) {
+    Barrel(float x, float y,
+           float width, float height,
+           int number, int amuntOfPictures,
+           String textureNamePrefix,String textureFormat,
+           Graphics graphics) {
+
         super(x, y, width, height);
+
         this.number = number;
         this.amuntOfPictures = amuntOfPictures;
         isStopped = true;
@@ -29,6 +38,7 @@ class Barrel extends GameContentUnit {
         this.pictureHeight = height / 3+2;
         this.texturePrefix= textureNamePrefix;
         this.textureFormat=textureFormat;
+        this.graphics = graphics;
         fill(pictures);
     }
 
@@ -57,7 +67,7 @@ class Barrel extends GameContentUnit {
     public void update() {
         float shift;
         if (!isStopped) {
-            shift = speed * Gdx.graphics.getDeltaTime();
+            shift = speed * graphics.getDeltaTime();
             for (int i = 0; i < amuntOfPictures; i++) {
                 pictures.get(i).setY(pictures.get(i).getY() - shift);
                 jumpUp(pictures.get(i));

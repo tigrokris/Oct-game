@@ -2,13 +2,14 @@ package ru.demyanko.casino.model.casino1;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import ru.demyanko.casino.model.AbstractGameContentUnit;
 
 
 /**
  * Created by Dmitriy on 27.09.2017.
  */
-class BottomPanel extends GameContentUnit {
-    Texture texture;
+class BottomPanel extends AbstractGameContentUnit {
+    private Texture texture;
     BottomPanel(float x, float y, float width, float height,String textureName) {
         super(x, y, width, height);
         texture =new Texture(textureName);

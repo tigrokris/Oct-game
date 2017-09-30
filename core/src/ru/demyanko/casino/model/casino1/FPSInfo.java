@@ -4,11 +4,12 @@ import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import ru.demyanko.casino.model.AbstractGameContentUnit;
 
 /**
  * Created by Dmitriy on 27.09.2017.
  */
-class FPSInfo extends GameContentUnit {
+class FPSInfo extends AbstractGameContentUnit {
     private BitmapFont font;
     private CharSequence strFPS;
     private Graphics graphics;

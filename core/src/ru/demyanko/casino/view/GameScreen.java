@@ -3,6 +3,7 @@ package ru.demyanko.casino.view;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import ru.demyanko.casino.Game;
 
 /**
@@ -10,9 +11,11 @@ import ru.demyanko.casino.Game;
  */
 public class GameScreen implements Screen{
     private Game game;
+    private SpriteBatch batch;
 
     public GameScreen(Game game) {
         this.game = game;
+        batch = new SpriteBatch();
     }
 
     @Override
@@ -24,9 +27,9 @@ public class GameScreen implements Screen{
     public void render(float delta) {
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        game.batch.begin();
-        game.gameContent.draw(game.batch);
-        game.batch.end();
+        batch.begin();
+        game.gameContent.draw(batch);
+        batch.end();
     }
 
     @Override
@@ -51,7 +54,7 @@ public class GameScreen implements Screen{
 
     @Override
     public void dispose() {
-        game.batch.dispose();
+        batch.dispose();
         game.gameContent.dispose();
     }
 }
