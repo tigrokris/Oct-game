@@ -37,6 +37,8 @@ public class GameController extends Game implements Controller{
 		super.render();
 
 		gameContent.update();
+		start();
+		stop();
 	}
 
 	@Override

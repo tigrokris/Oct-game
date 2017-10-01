@@ -1,10 +1,11 @@
 package ru.demyanko.casino.model.casino1;
 
 import com.badlogic.gdx.Graphics;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import ru.demyanko.casino.model.AbstractGameContent;
 import ru.demyanko.casino.model.AbstractGameContentUnit;
-
 /**
  * Created by Dmitriy on 28.09.2017.
  */

@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
-import ru.demyanko.casino.Game;
+import ru.demyanko.casino.GameController;
 import ru.demyanko.casino.model.AbstractGameContentUnit;
 
 /**
@@ -24,7 +24,7 @@ class BarrelsArray extends AbstractGameContentUnit {
         super(x, y, width, height);
         this.barrels=new Array();
         for (int i = 0; i < 5 ; i++) {
-            Barrel barrel =new Barrel(x+width*i/5, y, width/5,height,i, Game.AMOUNT_BARREL_PICTURES,texturePrefix,textureFormat,graphics);
+            Barrel barrel =new Barrel(x+width*i/5, y, width/5,height,i, GameController.AMOUNT_BARREL_PICTURES,texturePrefix,textureFormat,graphics);
             barrels.add(barrel);
         }
     }
@@ -44,10 +44,10 @@ class BarrelsArray extends AbstractGameContentUnit {
     }
 
     void start(){
-        if(Game.isStarted && !isStarted ){
+        if(GameController.isStarted && !isStarted ){
             for (int i = 0; i < barrels.size; i++) {
-                barrels.get(i).setSpeed(MathUtils.random(Game.LOWER_SPEED_LIMIT, (Game.UPPER_SPEED_LIMIT)));
-                Game.stopTime= TimeUtils.millis() + Game.ROTATION_TIME + MathUtils.random(0, (Game.ROTATION_DIAPASON_TIME));
+                barrels.get(i).setSpeed(MathUtils.random(GameController.LOWER_SPEED_LIMIT, (GameController.UPPER_SPEED_LIMIT)));
+                GameController.stopTime= TimeUtils.millis() + GameController.ROTATION_TIME + MathUtils.random(0, (GameController.ROTATION_DIAPASON_TIME));
                 barrels.get(i).setIsStopped(false);
                 barrelToStop=0;
                 isStarted=true;
@@ -56,8 +56,8 @@ class BarrelsArray extends AbstractGameContentUnit {
     }
 
     void stop(){
-        if(!Game.isStarted && isStarted ) {
-            if (barrelToStop < 5 && !Game.isStarted) {
+        if(!GameController.isStarted && isStarted ) {
+            if (barrelToStop < 5 && !GameController.isStarted) {
                 barrels.get(barrelToStop).stopBarrel();
                 if (barrels.get(barrelToStop).isStopped())
                     barrelToStop++;
