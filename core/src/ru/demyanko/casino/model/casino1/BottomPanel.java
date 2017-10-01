@@ -1,7 +1,7 @@
 package ru.demyanko.casino.model.casino1;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import ru.demyanko.casino.model.AbstractGameContentUnit;
 
 
@@ -9,10 +9,10 @@ import ru.demyanko.casino.model.AbstractGameContentUnit;
  * Created by Dmitriy on 27.09.2017.
  */
 class BottomPanel extends AbstractGameContentUnit {
-    private Texture texture;
-    BottomPanel(float x, float y, float width, float height,String textureName) {
+    private TextureRegion texture;
+    BottomPanel(float x, float y, float width, float height,TextureRegion textureRegion) {
         super(x, y, width, height);
-        texture =new Texture(textureName);
+        texture =textureRegion;
     }
 
     @Override
@@ -27,6 +27,6 @@ class BottomPanel extends AbstractGameContentUnit {
 
     @Override
     public void dispose() {
-        texture.dispose();
+
     }
 }

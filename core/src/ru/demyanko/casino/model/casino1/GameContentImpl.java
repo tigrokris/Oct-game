@@ -15,6 +15,8 @@ public class GameContentImpl extends AbstractGameContent {
     private FPSInfo FPSInfo;
     private BarrelsArray barrels;
     private Graphics graphics;
+    private AssetManager assetManager;
+    private TextureAtlas textureAtlas;
 
     public GameContentImpl(Graphics graphics) {
         super(graphics);
@@ -22,11 +24,17 @@ public class GameContentImpl extends AbstractGameContent {
     }
     @Override
     public void create(){
+        assetManager = new AssetManager();
+        assetManager.load("casino1.atlas", TextureAtlas.class);
+        assetManager.finishLoading();
+        textureAtlas=assetManager.get("casino1.atlas", TextureAtlas.class);
+
+
         float bottomPanelHeight =screenHeigth/5;
-        button = new Button(screenWidth,bottomPanelHeight,"startAnim.jpg",graphics);
-        bottomPanel =new BottomPanel(0,0,screenWidth,bottomPanelHeight,"bottomPanel.jpg");
+        button = new Button(screenWidth,bottomPanelHeight,textureAtlas,"start",12,graphics);
+        bottomPanel =new BottomPanel(0,0,screenWidth,bottomPanelHeight,textureAtlas.findRegion("bottomPanel"));
         FPSInfo =new FPSInfo(10,20,graphics);
-        barrels=new BarrelsArray(0,bottomPanelHeight,screenWidth,screenHeigth-bottomPanelHeight,"","jpg",graphics);
+        barrels=new BarrelsArray(0,bottomPanelHeight,screenWidth,screenHeigth-bottomPanelHeight,textureAtlas,graphics);
 
         gameContentUnits.add(barrels);
         gameContentUnits.add(bottomPanel);
@@ -52,5 +60,12 @@ public class GameContentImpl extends AbstractGameContent {
     @Override
     public void stop() {
         barrels.stop();
+    }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        assetManager.dispose();
+        textureAtlas.dispose();
     }
 }

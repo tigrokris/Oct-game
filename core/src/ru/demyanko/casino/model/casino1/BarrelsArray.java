@@ -2,6 +2,7 @@ package ru.demyanko.casino.model.casino1;
 
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
@@ -18,13 +19,13 @@ class BarrelsArray extends AbstractGameContentUnit {
 
     BarrelsArray(float x, float y,
                  float width, float height,
-                 String texturePrefix,String textureFormat,
+                 TextureAtlas textureAtlas,
                  Graphics graphics) {
 
         super(x, y, width, height);
         this.barrels=new Array();
         for (int i = 0; i < 5 ; i++) {
-            Barrel barrel =new Barrel(x+width*i/5, y, width/5,height,i, GameController.AMOUNT_BARREL_PICTURES,texturePrefix,textureFormat,graphics);
+            Barrel barrel =new Barrel(x+width*i/5, y, width/5,height,i, GameController.AMOUNT_BARREL_PICTURES,textureAtlas,graphics);
             barrels.add(barrel);
         }
     }

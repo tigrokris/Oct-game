@@ -1,10 +1,9 @@
 package ru.demyanko.casino.model.casino1;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import ru.demyanko.casino.model.AbstractGameContentUnit;
@@ -19,14 +18,13 @@ class Barrel extends AbstractGameContentUnit {
     private Array<Sprite> pictures;
     private float pictureHeight;
     private boolean isStopped;
-    private String texturePrefix;
-    private String textureFormat;
     private Graphics graphics;
+    private TextureAtlas textureAtlas;
 
     Barrel(float x, float y,
            float width, float height,
            int number, int amuntOfPictures,
-           String textureNamePrefix,String textureFormat,
+           TextureAtlas textureAtlas,
            Graphics graphics) {
 
         super(x, y, width, height);
@@ -35,16 +33,16 @@ class Barrel extends AbstractGameContentUnit {
         this.amuntOfPictures = amuntOfPictures;
         isStopped = true;
         this.pictures = new Array();
-        this.pictureHeight = height / 3+2;
-        this.texturePrefix= textureNamePrefix;
-        this.textureFormat=textureFormat;
+        this.pictureHeight = height / 3;
+        this.textureAtlas = textureAtlas;
         this.graphics = graphics;
         fill(pictures);
     }
 
+
     private void fill(Array<Sprite> array) {
         for (int i = 0; i < amuntOfPictures; i++) {
-            Sprite picture = new Sprite(new Texture(texturePrefix+MathUtils.random(1, amuntOfPictures) + "."+textureFormat));
+            Sprite picture = textureAtlas.createSprite("" + MathUtils.random(1, amuntOfPictures));
             picture.setX(getX());
             picture.setY(getY() + i * pictureHeight);
             array.add(picture);
@@ -56,12 +54,10 @@ class Barrel extends AbstractGameContentUnit {
     }
 
 
-
     @Override
     public void draw(SpriteBatch batch) {
         for (int i = 0; i < amuntOfPictures; i++) {
-            batch.draw(pictures.get(i).getTexture(), getX(), pictures.get(i).getY(), getWidth(), pictureHeight);
-        }
+            pictures.get(i).draw(batch);        }
     }
     @Override
     public void update() {
