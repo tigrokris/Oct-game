@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Array;
 import ru.demyanko.casino.model.AbstractGameContentUnit;
 
 
@@ -13,14 +14,14 @@ import ru.demyanko.casino.model.AbstractGameContentUnit;
  */
 class Button extends AbstractGameContentUnit {
     private Animation<TextureRegion> animation;
-    private TextureRegion[] frames;
+    private Array<TextureAtlas.AtlasRegion> frames;
     private TextureRegion currentFrame;
     private float stateTime;
     private Graphics graphics;
     private TextureAtlas textureAtlas;
     private String texturePrefix;
 
-    Button(float screenWidth, float bottomPanelHeight, TextureAtlas textureAtlas, String texturePrefix, int amountOfFrames, Graphics graphics) {
+    Button(float screenWidth, float bottomPanelHeight, TextureAtlas textureAtlas, String texturePrefix, Graphics graphics) {
         this.graphics = graphics;
         this.textureAtlas = textureAtlas;
         this.texturePrefix = texturePrefix;
@@ -28,18 +29,13 @@ class Button extends AbstractGameContentUnit {
         setHeight(bottomPanelHeight / 2);
         setX(screenWidth / 2 - getWidth() / 2);
         setY(bottomPanelHeight / 2 - getHeight() / 2);
-        frames = new TextureRegion[amountOfFrames];
         createAnimation();
     }
 
     private void createAnimation() {
-        for (int i = 0; i < frames.length; i++) {
-            frames[i] = textureAtlas.findRegion(texturePrefix, i);
+        frames = textureAtlas.findRegions(texturePrefix);
 
-        }
         animation = new Animation<>(0.08f, frames);
-        //the next line does not work now
-        //animation = new Animation<>(0.08f, textureAtlas.findRegion(texturePrefix));
         stateTime = 0f;
         currentFrame = animation.getKeyFrame(stateTime, true);
     }

@@ -31,7 +31,7 @@ public class GameContentImpl extends AbstractGameContent {
 
 
         float bottomPanelHeight =screenHeigth/5;
-        button = new Button(screenWidth,bottomPanelHeight,textureAtlas,"start",12,graphics);
+        button = new Button(screenWidth,bottomPanelHeight,textureAtlas,"start",graphics);
         bottomPanel =new BottomPanel(0,0,screenWidth,bottomPanelHeight,textureAtlas.findRegion("bottomPanel"));
         FPSInfo =new FPSInfo(10,20,graphics);
         barrels=new BarrelsArray(0,bottomPanelHeight,screenWidth,screenHeigth-bottomPanelHeight,textureAtlas,graphics);
